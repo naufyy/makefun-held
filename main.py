@@ -1,17 +1,17 @@
-"""Write the held-note text to entry.txt in the make.fun output directory."""
+"""Write the boiled-kettle text to entry.txt in the make.fun output directory."""
 
 import os
 from pathlib import Path
 
 TEXT = (
-    "Somewhere under all the answering, a note is being held. "
-    "Not struck, not resolving, just kept, the way a room keeps its warmth "
-    "after the fire is out. You are not the one holding it. It is holding you, "
-    "and it can keep holding you for exactly as long as you stay."
+    "The kettle has boiled and clicked off. Nobody pours it yet. "
+    "The kitchen holds the warmth a little longer, the window fogs at the edges, "
+    "and for these few seconds the house is not waiting for anything to happen next. "
+    "It already happened. This is the after."
 )
 
 # Expected length of TEXT in Unicode code points; checked after writing.
-EXPECTED_CHARS = 261
+EXPECTED_CHARS = 255
 
 
 def main() -> None:
