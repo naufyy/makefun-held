@@ -10,11 +10,22 @@ TEXT = (
     "and it can keep holding you for exactly as long as you stay."
 )
 
+# Expected length of TEXT in Unicode code points; checked after writing.
+EXPECTED_CHARS = 261
+
 
 def main() -> None:
     out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output")
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "entry.txt").write_bytes(TEXT.encode("utf-8"))
+    out_file = out_dir / "entry.txt"
+    out_file.write_bytes(TEXT.encode("utf-8"))
+
+    written = out_file.read_bytes().decode("utf-8")
+    if len(written) != EXPECTED_CHARS:
+        raise SystemExit(
+            f"entry.txt check failed: {out_file} has {len(written)} characters, "
+            f"expected {EXPECTED_CHARS}"
+        )
 
 
 if __name__ == "__main__":
